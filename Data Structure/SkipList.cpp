@@ -144,7 +144,7 @@ int main() {
     cout << "Searching for 15: " << (skipList.search(15) ? "Found" : "Not Found") << "\n";
 
     skipList.remove(7);
-    cout << "\nSkipList after removing 6:\n";
+    cout << "\nSkipList after removing 7:\n";
     skipList.display();
 
     return 0;
