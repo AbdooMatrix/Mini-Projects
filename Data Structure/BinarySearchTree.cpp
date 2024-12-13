@@ -62,8 +62,7 @@ private:
                 Node* temp = node->right; // Replace the node with its right child.
                 delete node;
                 return temp;
-            }
-            else if (node->right == nullptr) {
+            } else if (node->right == nullptr) {
                 Node* temp = node->left; // Replace the node with its left child.
                 delete node;
                 return temp;
@@ -118,6 +117,16 @@ private:
         }
     }
 
+    // This function performs a descending order traversal, starting from a given node.
+    // It prints the keys in descending order.
+    void descOrderTraversal(Node* node) {
+        if (node != nullptr) {
+            descOrderTraversal(node->right); // Visit the right subtree first.
+            cout << node->key << ' ';      // Print the current node's key.
+            descOrderTraversal(node->left);  // Visit the left subtree.
+        }
+    }
+
     // This function performs a pre-order traversal, starting from a given node.
     // It prints the root first, then the left and right subtrees.
     void preOrderTraversal(Node* node) {
@@ -162,6 +171,11 @@ public:
     // Wrapper function for in-order traversal of the BST.
     void inOrderTraversal() {
         inOrderTraversal(root);
+    }
+
+    // Wrapper function for descending order traversal of the BST.
+    void descOrderTraversal() {
+        descOrderTraversal(root);
     }
 
     // Wrapper function for pre-order traversal of the BST.
@@ -209,10 +223,19 @@ int main() {
     bst.insert(90);
     bst.insert(80);
 
+    cout << "Print in Ascending order (in order traversal): ";
     bst.inOrderTraversal();
     cout << endl;
+
+    cout << "Print in descending order: ";
+    bst.descOrderTraversal();
+    cout << endl;
+
+    cout << "Print in pre-order traversal: ";
     bst.preOrderTraversal();
     cout << endl;
+
+    cout << "Print in post-order traversal: ";
     bst.postOrderTraversal();
 
     return 0;
